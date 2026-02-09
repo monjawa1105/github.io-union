@@ -1,0 +1,234 @@
+body{
+margin:0;
+font-family:"Rounded Mplus 1c",sans-serif;
+background:linear-gradient(180deg,#ffb6e6,#fff3a0);
+color:#333;
+}
+
+header{
+text-align:center;
+padding:60px 20px;
+}
+
+h1{
+font-size:3rem;
+color:#ff4fbf;
+}
+
+section{
+padding:40px 20px;
+}
+
+h2{
+color:#ff4fbf;
+border-bottom:3px dashed #ffd000;
+display:inline-block;
+}
+
+ul{
+list-style: "⭐ ";
+padding-left:20px;
+}
+
+.card{
+display:flex;
+gap:15px;
+background:#fff;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+align-items:center;
+}
+
+.card img{
+width:70px;
+height:70px;
+border-radius:50%;
+}
+
+a{
+color:#ff4fbf;
+font-weight:bold;
+text-decoration:none;
+}
+
+/* メニュー */
+#menuBtn{
+  position:fixed;
+  top:25px;   /* 15 → 25px に */
+  right:20px; /* 少し余白 */
+  font-size:28px;
+  cursor:pointer;
+  z-index:3000;
+}
+
+
+#menu{
+position:fixed;
+top:60px;
+right:15px;
+background:#fff;
+padding:15px;
+border-radius:10px;
+display:none;
+z-index:3000;
+}
+
+#menu a{
+display:block;
+margin:10px 0;
+}
+
+/* トップへ */
+#topBtn{
+position:fixed;
+right:15px;
+bottom:15px;
+font-size:22px;
+border:none;
+background:#ff4fbf;
+color:#fff;
+width:45px;
+height:45px;
+border-radius:50%;
+cursor:pointer;
+}
+.creator{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  font-size:0.9rem;
+  margin-bottom:15px;
+}
+/* キラキラ背景 */
+#sparkle{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* スクロール出現アニメ */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+.card:hover{
+  box-shadow:0 0 15px #ff4fbf,0 0 30px #ffd000;
+  transform:scale(1.03);
+  transition:.3s;
+}
+
+#fortuneBox{
+ text-align:center;
+}
+
+#fortuneBtn{
+ background:#ff4fbf;
+ color:white;
+ border:none;
+ padding:12px 25px;
+ font-size:18px;
+ border-radius:30px;
+ cursor:pointer;
+ box-shadow:0 0 10px #ffd000;
+}
+
+#fortuneBtn:hover{
+ transform:scale(1.1);
+}
+
+#fortuneResult{
+ margin-top:20px;
+ font-size:20px;
+ color:#ff4fbf;
+}
+
+#logo span{
+ display:inline-block;
+ opacity:0;
+ transform:translateY(20px) scale(0.9);
+ animation:pop 0.35s forwards,
+          glow 1.5s infinite alternate;
+ animation-delay: calc(var(--i) * 0.1s);
+
+ color:#ff4fbf; /* 基本色ピンク */
+
+ text-shadow:
+  0 0 5px rgba(255,79,191,0.6),
+  0 0 10px rgba(255,208,0,0.5);
+}
+
+#logo span{
+  position: relative;
+  z-index: 1;  /* 元々は auto */
+}
+
+
+
+
+@keyframes pop{
+ 0%{
+  opacity:0;
+  transform:translateY(30px) scale(0.8);
+ }
+ 60%{
+  opacity:1;
+  transform:translateY(-10px) scale(1.1);
+ }
+ 100%{
+  opacity:1;
+  transform:translateY(0) scale(1);
+ }
+}
+
+@keyframes glow{
+ 0%{
+  text-shadow:
+   0 0 3px rgba(255,79,191,0.5),
+   0 0 6px rgba(255,208,0,0.4);
+ }
+ 100%{
+  text-shadow:
+   0 0 10px rgba(255,79,191,1),
+   0 0 20px rgba(255,208,0,0.6);
+ }
+}
+
+
+#logo:hover span{
+ text-shadow:
+  0 0 15px #ff4fbf,
+  0 0 30px #ffd000;
+}
+
+#menu a{
+  display:block;
+  padding:10px 15px;
+  margin-bottom:5px;
+  border-radius:8px;
+  text-decoration:none;
+  color:#333;         /* 通常文字色 */
+  background: #fff;   /* 通常背景 */
+  transition: all 0.2s ease;
+}
+
+/* ホバー時の強調 */
+#menu a:hover{
+  background: #ff4fbf;   /* ピンク背景 */
+  color: #fff;           /* 文字白に */
+  transform: scale(1.05); /* 少し拡大 */
+  box-shadow: 0 0 10px rgba(255,79,191,0.7); /* 光る演出 */
+}
+
+
