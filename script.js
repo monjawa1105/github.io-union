@@ -214,3 +214,24 @@ document.querySelectorAll('.glossary-card').forEach(card => {
     createPoos(x, y);
   });
 });
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      if(entry.target.classList.contains('card-left-init')){
+        entry.target.classList.add('left-show');
+      } else if(entry.target.classList.contains('card-right-init')){
+        entry.target.classList.add('right-show');
+      } else if(entry.target.classList.contains('glossary-card-left')){
+        entry.target.classList.add('left-show');
+      } else if(entry.target.classList.contains('glossary-card-right')){
+        entry.target.classList.add('right-show');
+      }
+      observer.unobserve(entry.target); // 一度だけ発動
+    }
+  });
+}, { threshold: 0.2 }); // 20%見えたら発火
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+document.querySelectorAll('.glossary-card').forEach(card => observer.observe(card));
+
