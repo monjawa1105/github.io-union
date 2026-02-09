@@ -128,4 +128,47 @@ if(fortuneBtn && fortuneResult){
  });
 
 }
+const cursor = document.getElementById("emojiCursor");
 
+document.addEventListener("mousemove", (e)=>{
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+function createHearts(x, y){
+  const colors = ['#ff4fbf','#ff69b4','#ffd700','#ff7ad9']; // カラフル
+  const count = 40; // ハートの数
+  for(let i=0; i<count; i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.textContent = '♡';
+    heart.style.color = colors[Math.floor(Math.random()*colors.length)];
+
+    // ランダムに飛ぶ
+    const randX = (Math.random() - 0.5) * 400; // 左右
+    const randY = -Math.random() * 400 - 100;  // 上方向
+    const randScale = Math.random() * 0.8 + 0.8; // 0.8〜1.6倍
+    const randRotate = Math.random() * 360 + 'deg'; // 回転
+
+    heart.style.setProperty('--x', randX + 'px');
+    heart.style.setProperty('--y', randY + 'px');
+    heart.style.setProperty('--scale', randScale);
+    heart.style.setProperty('--rotate', randRotate);
+
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=> heart.remove(), 1500); // 1.5秒で消える
+  }
+}
+
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',(e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = rect.left + rect.width/2;
+    const y = rect.top + rect.height/2;
+    createHearts(x, y);
+  });
+});
