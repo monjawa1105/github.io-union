@@ -61,6 +61,7 @@ text-decoration:none;
   font-size:28px;
   cursor:pointer;
   z-index:3000;
+  color: #3a1121;
 }
 
 
@@ -112,16 +113,19 @@ margin:10px 0;
 
 .creator {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column; /* 縦並び */
+  align-items: center;    /* 中央揃え */
+  gap: 5px;               /* 作者名とリンクの間隔 */
   font-size: 0.9rem;
   margin-bottom: 15px;
-
-  flex-wrap: wrap;       /* 横幅が足りないときだけ折り返す */
-  white-space: normal;   /* 折り返しOK */
-  text-align: center;    /* 改行後も中央揃え */
 }
+
+.creator-name {
+  font-weight: bold;
+  color: #ff4fbf;  /* ピンクでサイトに合う色に */
+  text-align: center;
+}
+
 
 @media screen and (max-width: 480px) {
   .creator {
@@ -298,6 +302,12 @@ li {
   color: #3a1121; /* 黄色系 */
   font-weight: bold;
 }
+
+.or-text {
+  color: #3a1121;   /* 明るい黄色に変更 */
+  font-weight: bold;
+}
+
 
 .x-link {
   color: #1DA1F2; /* 普通の青 */
