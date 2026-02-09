@@ -118,9 +118,17 @@ margin:10px 0;
   font-size: 0.9rem;
   margin-bottom: 15px;
 
-  flex-wrap: nowrap;   /* 横並びを強制 */
-  white-space: nowrap; /* 改行禁止 */
+  flex-wrap: wrap;       /* 横幅が足りないときだけ折り返す */
+  white-space: normal;   /* 折り返しOK */
+  text-align: center;    /* 改行後も中央揃え */
 }
+
+@media screen and (max-width: 480px) {
+  .creator {
+    font-size: 0.8rem; /* 少し縮小 */
+  }
+}
+
 
 /* キラキラ背景 */
 #sparkle{
