@@ -97,11 +97,15 @@ const fortuneResult = document.getElementById("fortuneResult");
 if(fortuneBtn && fortuneResult){
 
  const fortunes=[
-  "SSR大吉✨ 推しが尊すぎる日",
-  "UR中吉💖 神引き来るかも",
-  "R小吉⭐ 推しを眺めよう",
-  "N吉😊 まったり推し活",
-  "爆死注意⚠️ でも推しは最高"
+  "大吉 神引き確定！",
+  "吉 イシツブテポーズ確定！",
+  "中吉 儀式確定！",
+  "小吉 KPゲットだぜ！",
+  "半吉 顎が出ている",
+  "末吉 （壁によりかかる）",
+  "末小吉 様子がおかしい",
+  "凶 セブンスドゲザーフ確定！",
+  "大凶 えれみーた時空発生！"
  ];
 
  const today = new Date().toDateString();
@@ -170,5 +174,43 @@ document.querySelectorAll('.card').forEach(card=>{
     const x = rect.left + rect.width/2;
     const y = rect.top + rect.height/2;
     createHearts(x, y);
+  });
+});
+
+function createPoos(x, y){
+  const count = 30; // 💩の数
+  for(let i=0; i<count; i++){
+    const poo = document.createElement('div');
+    poo.className = 'poo';
+    poo.textContent = '💩';
+
+    // ランダムに飛ばす
+    const randX = (Math.random() - 0.5) * 400; // 左右
+    const randY = -Math.random() * 400 - 100;  // 上方向
+    const randScale = Math.random() * 0.8 + 0.8;
+    const randRotate = Math.random() * 360 + 'deg';
+
+    poo.style.setProperty('--x', randX + 'px');
+    poo.style.setProperty('--y', randY + 'px');
+    poo.style.setProperty('--scale', randScale);
+    poo.style.setProperty('--rotate', randRotate);
+
+    poo.style.left = x + 'px';
+    poo.style.top = y + 'px';
+
+    document.body.appendChild(poo);
+
+    // 1.5秒後に削除
+    setTimeout(()=> poo.remove(), 1500);
+  }
+}
+
+// 用語集カードにクリックイベント
+document.querySelectorAll('.glossary-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = rect.left + rect.width/2;
+    const y = rect.top + rect.height/2;
+    createPoos(x, y);
   });
 });
