@@ -82,18 +82,34 @@ margin:10px 0;
 
 /* トップへ */
 #topBtn{
-position:fixed;
-right:15px;
-bottom:15px;
-font-size:22px;
-border:none;
-background:#ff4fbf;
-color:#fff;
-width:45px;
-height:45px;
-border-radius:50%;
-cursor:pointer;
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  font-size:22px;
+  border:none;
+  background:#ff4fbf;
+  color:#fff;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow: 0 0 8px rgba(255,79,191,0.5); /* 元から光る感じ */
+  transition: all 0.25s ease; /* アニメーション */
 }
+
+/* ホバー時の演出 */
+#topBtn:hover{
+  background:#ffd000; /* 黄色に変化 */
+  transform: scale(1.2) rotate(-10deg); /* 少し大きく＆傾け */
+  box-shadow: 0 0 15px #ff4fbf, 0 0 25px #ffd000; /* 光を派手に */
+}
+
+/* クリック時 */
+#topBtn:active{
+  transform: scale(1) rotate(0deg); /* 元のサイズに戻る */
+  box-shadow: 0 0 8px rgba(255,79,191,0.5);
+}
+
 .creator{
   display:flex;
   justify-content:center;
@@ -230,5 +246,67 @@ cursor:pointer;
   transform: scale(1.05); /* 少し拡大 */
   box-shadow: 0 0 10px rgba(255,79,191,0.7); /* 光る演出 */
 }
+#emojiCursor{
+  position: fixed;
+  pointer-events: none; /* クリックを邪魔しない */
+  font-size: 32px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+  z-index: 5000; /* 何より前面 */
+  color: #ff4fbf; /* 💩をピンクに */
+}
+body {
+  cursor: none; /* デフォルトカーソル非表示 */
+}
+
+/* ハート用 */
+.heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 24px;
+  animation: heartFly 1.5s forwards;
+  z-index: 4000;
+}
+
+@keyframes heartFly {
+  0% {
+    opacity: 1;
+    transform: translate(0,0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(var(--scale)) rotate(var(--rotate));
+  }
+}
+
+p, .text {
+  color: #3a1121; /* 明るいピンク */
+}
+li {
+  color: #3a1121; /* 黄色系 */
+  font-weight: bold;
+}
+
+.x-link {
+  color: #1DA1F2; /* 普通の青 */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* ホバー時の強調 */
+.x-link:hover {
+  color: #ff4fbf; /* ピンクに変化 */
+  transform: scale(1.1); /* 少し拡大 */
+  text-shadow: 0 0 10px #ff4fbf, 0 0 20px #ffd000; /* 発光 */
+}
+
+/* クリックした状態でもわかるように */
+.x-link:active {
+  transform: scale(0.95); /* 押した感 */
+  text-shadow: 0 0 5px #ff4fbf;
+}
+
 
 
