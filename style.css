@@ -349,7 +349,7 @@ li {
   max-width: 400px;     /* PCでも広くなりすぎない */
   color: #fff;
   box-shadow: 0 0 10px rgba(255,79,191,0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 1.2s, box-shadow 0.2s;
   cursor: pointer;
 }
 .glossary-card:hover {
@@ -390,3 +390,46 @@ li {
   }
 }
 
+/* 初期状態：左右に隠す */
+.card {
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.8s ease-out;
+}
+
+/* 左から出る */
+.card.left-show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 右から出る */
+.card.right-show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* アニメ用の初期位置 */
+.card-left-init {
+  transform: translateX(-100px);
+}
+
+.card-right-init {
+  transform: translateX(100px);
+}
+
+.glossary-card-left {
+  transform: translateX(-100px);
+}
+.glossary-card-right {
+  transform: translateX(100px);
+}
+
+.left-show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.right-show {
+  opacity: 1;
+  transform: translateX(0);
+}
