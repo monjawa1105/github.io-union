@@ -332,3 +332,61 @@ li {
 
 
 
+
+.glossary-cards {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center;    /* 中央寄せ */
+  gap: 20px;              /* カード間のスペース */
+}
+
+
+.glossary-card {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 15px;
+  width: 90%;           /* 画面幅の90%で縦長に収める */
+  max-width: 400px;     /* PCでも広くなりすぎない */
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,79,191,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.glossary-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 20px #ff4fbf, 0 0 30px #ffd000;
+}
+
+.term {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ff4fbf;
+  margin-bottom: 8px;
+}
+
+.definition {
+  font-size: 0.9rem;
+  color: #3a1121;
+  line-height: 1.3;
+}
+
+.poo {
+  position: fixed;
+  pointer-events: none; /* クリックを邪魔しない */
+  font-size: 32px;
+  color: #ff4fbf; /* ピンク💩 */
+  animation: pooFly 1.5s forwards;
+  z-index: 5000;
+}
+
+@keyframes pooFly {
+  0% {
+    opacity: 1;
+    transform: translate(0,0) scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(var(--scale)) rotate(var(--rotate));
+  }
+}
+
