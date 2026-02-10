@@ -2,7 +2,7 @@ body{
 margin:0;
 font-family:"Rounded Mplus 1c",sans-serif;
 background:linear-gradient(180deg,#ffb6e6,#fff3a0);
-color:#333;
+color:#3a1121;
 }
 
 header{
@@ -31,15 +31,26 @@ padding-left:20px;
 }
 
 .card{
-display:flex;
-gap:15px;
-background:#fff;
-padding:15px;
-border-radius:15px;
-margin-top:15px;
-box-shadow:0 5px 10px rgba(0,0,0,.1);
-align-items:center;
+  display:flex;
+  gap:15px;
+  background:#fff;
+  padding:15px;
+  border-radius:15px;
+  margin-top:15px;
+  align-items:center;
+
+  /* 発光 */
+  box-shadow:0 0 10px rgba(255,79,191,0.5);
+
+  /* スクロール用 */
+  opacity:0;
+  transform: translateX(0);
+
+  transition: 
+    transform 1.2s ease-out,
+    box-shadow 0.3s ease;
 }
+
 
 .card img{
 width:70px;
@@ -69,7 +80,7 @@ text-decoration:none;
 position:fixed;
 top:60px;
 right:15px;
-background:#fff;
+background:#74ffe3;
 padding:15px;
 border-radius:10px;
 display:none;
@@ -155,11 +166,6 @@ margin:10px 0;
   opacity:1;
   transform:translateY(0);
 }
-.card:hover{
-  box-shadow:0 0 15px #ff4fbf,0 0 30px #ffd000;
-  transform:scale(1.03);
-  transition:.3s;
-}
 
 #fortuneBox{
  text-align:center;
@@ -178,6 +184,7 @@ margin:10px 0;
 
 #fortuneBtn:hover{
  transform:scale(1.1);
+ box-shadow:0 0 10px #ff4fbf;
 }
 
 #fortuneResult{
@@ -250,7 +257,7 @@ margin:10px 0;
   margin-bottom:5px;
   border-radius:8px;
   text-decoration:none;
-  color:#333;         /* 通常文字色 */
+  color:#3a1121;         /* 通常文字色 */
   background: #fff;   /* 通常背景 */
   transition: all 0.2s ease;
 }
@@ -390,12 +397,7 @@ li {
   }
 }
 
-/* 初期状態：左右に隠す */
-.card {
-  opacity: 0;
-  transform: translateX(0);
-  transition: all 0.8s ease-out;
-}
+
 
 /* 左から出る */
 .card.left-show {
@@ -433,3 +435,359 @@ li {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* 用語集と同じ浮き演出を自己紹介カードにも */
+.card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 20px #ff4fbf, 0 0 30px #ffd000;
+}
+
+.card,
+.glossary-card{
+  animation: softGlow 2s infinite alternate;
+}
+
+@keyframes softGlow{
+  from{ box-shadow:0 0 8px rgba(255,79,191,0.4); }
+  to{ box-shadow:0 0 16px rgba(255,79,191,0.8); }
+}
+
+.member-name{
+  cursor:pointer;
+  color:#ff4fbf;
+  transition: transform 0.2s, text-shadow 0.2s;
+}
+
+.member-name:hover{
+  transform: scale(1.1);
+  text-shadow: 0 0 10px #ff4fbf;
+}
+/* 🌈 レインボー文字アニメ */
+.rainbow-list li{
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    red, orange, yellow, green, cyan, blue, violet, red
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 4s linear infinite;
+}
+
+@keyframes rainbowText{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position: 300%;
+  }
+}
+
+/* 🎰 スロット全体 */
+.slot-machine{
+  text-align:center;
+  margin:50px 0;
+  padding:25px;
+  
+}
+
+/* タイトル */
+.slot-title{
+  color:#ff4fbf;
+  margin-bottom:15px;
+  
+}
+
+/* リール */
+.reels{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  font-size:50px;
+  margin-bottom:20px;
+}
+
+.reel{
+  width:70px;
+  height:70px;
+  background:#000;
+  border:2px solid #ff4fbf;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:inset 0 0 10px #ff4fbf;
+}
+
+/* ボタン */
+#slotBtn{
+  background:#ff4fbf;
+  color:#fff;
+  border:none;
+  padding:10px 25px;
+  font-size:18px;
+  border-radius:20px;
+  cursor:pointer;
+  box-shadow:0 0 10px #ffd000;
+}
+
+#slotBtn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px #ff4fbf;
+}
+.reel.stop{
+  animation:bounce 0.3s ease;
+}
+
+@keyframes bounce{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.3);}
+  100%{transform:scale(1);}
+}
+/* 🎉 ジャックポット演出 */
+.jackpot{
+  animation: jackpotFlash 0.15s infinite alternate;
+}
+
+@keyframes jackpotFlash{
+  0%{
+    background:#ff4fbf;
+    box-shadow:0 0 20px #ff4fbf;
+  }
+  100%{
+    background:#ffd700;
+    box-shadow:0 0 40px #ffd700;
+  }
+}
+
+/* JACKPOT文字ド派手 */
+#slotResult.jackpot-text{
+  animation: textPop 0.3s infinite alternate;
+  font-size:28px;
+  text-shadow:0 0 10px #ffd700,0 0 25px #ff4fbf;
+}
+
+@keyframes textPop{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.3);}
+}
+
+/* 🎊 紙吹雪 */
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:10px;
+  height:10px;
+  background:red;
+  animation: confettiFall 2.5s linear forwards;
+  z-index:9999;
+}
+
+@keyframes confettiFall{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(100vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* 🌈 背景レインボーフラッシュ */
+body.rainbow-flash{
+  animation: rainbowFlash 0.8s linear;
+}
+
+@keyframes rainbowFlash{
+  0%{
+    background:#ff4fbf;
+  }
+  20%{
+    background:#ff0000;
+  }
+  40%{
+    background:#ffd700;
+  }
+  60%{
+    background:#00ffea;
+  }
+  80%{
+    background:#7CFF00;
+  }
+  100%{
+    background:linear-gradient(180deg,#ffb6e6,#fff3a0);
+  }
+}
+
+/* 🌠 流れ星 */
+.shooting-star{
+  position: fixed;
+  top: 20%;
+  left: -50px;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 2000;
+  animation: starFly 5s linear forwards;
+  user-select: none;
+  padding: 10px;
+}
+
+@keyframes starFly{
+  from{
+    transform: translateX(0) translateY(0);
+  }
+  to{
+    transform: translateX(120vw) translateY(30vh);
+  }
+}
+
+/* ✨ 特殊演出 */
+.star-effect{
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle,#fff,#ff4fbf,#ffd000);
+  opacity: 0.9;
+  animation: starFlash 0.8s ease-out forwards;
+  z-index: 4000;
+}
+
+@keyframes starFlash{
+  from{opacity:1;}
+  to{opacity:0;}
+}
+
+/* 🐦 Xスライドショー */
+
+#x-slideshow{
+  width:100%;
+  overflow:hidden;
+}
+
+/* スライダー外枠 */
+.x-slider{
+  position: relative;
+  width:100%;
+  max-width:650px;
+  margin:0 auto 0 -20px;
+}
+
+/* 見える窓 */
+.slides-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+/* 横レーン */
+.slides{
+  display:flex;
+  transition: transform 0.6s ease;
+}
+
+/* 1枚 */
+.slide{
+  flex: 0 0 100%;   /* ←これが最重要 */
+  display:flex;
+  justify-content:center;
+}
+
+/* X埋め込み幅制御 */
+.slide blockquote,
+.slide iframe{
+  width:100% !important;
+  max-width:550px !important;
+}
+
+/* ボタン */
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#ff4fbf;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  padding:8px 12px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  box-shadow:0 0 10px #ff4fbf;
+}
+
+.prev{ left:5px; }
+.next{ right:5px; }
+
+.slide-btn:hover{
+  transform:translateY(-50%) scale(1.2);
+}
+
+/* ===== ローディング画面 ===== */
+
+#loadingScreen{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(180deg,#ffb6e6,#fff3a0);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+/* ロゴ文字 */
+.loading-logo span{
+  display:inline-block;
+  font-size:3rem;
+  font-weight:bold;
+  color:#ff4fbf;
+  opacity:0;
+  animation: loadingPop 0.6s forwards;
+  animation-delay: calc(var(--i) * 0.15s);
+  text-shadow:
+    0 0 10px #ff4fbf,
+    0 0 20px #ffd000;
+}
+
+@keyframes loadingPop{
+  0%{
+    opacity:0;
+    transform:translateY(20px) scale(0.8);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* Loading... */
+.loading-text{
+  margin-top:15px;
+  color:#3a1121;
+  font-size:1.1rem;
+  letter-spacing:2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0.3;}
+}
+
+/* フェードアウト */
+#loadingScreen.fade-out{
+  animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut{
+  to{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+
+
