@@ -235,3 +235,133 @@ document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
 document.querySelectorAll('.glossary-card').forEach(card => observer.observe(card));
 
+// 🌠 流れ星生成
+setInterval(()=>{
+  if(Math.random() < 0.3){ // 出現確率
+    createStar();
+  }
+},5000);
+
+function createStar(){
+  const star = document.createElement("div");
+  star.className = "shooting-star";
+  star.textContent = "⭐";
+
+  star.style.top = Math.random()*50 + "vh";
+
+  star.addEventListener("click",()=>{
+    star.remove();
+    triggerStarEffect();
+  });
+
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),5000);
+}
+
+// ✨ クリック時の特殊演出
+function triggerStarEffect(){
+
+  // 画面フラッシュ
+  const flash = document.createElement("div");
+  flash.className = "star-effect";
+  document.body.appendChild(flash);
+  setTimeout(()=>flash.remove(),800);
+
+  // ハート大量発生
+  for(let i=0;i<40;i++){
+    const heart = document.createElement("span");
+    heart.textContent = "🌟";
+    heart.className = "heart";
+
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.top = Math.random()*100+"vh";
+
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),1500);
+  }
+
+}
+
+let currentSlide = 0;
+
+const slidesTrack = document.querySelector(".slides");
+const totalSlides = document.querySelectorAll(".slide").length;
+
+document.querySelector(".next").addEventListener("click",()=>{
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateSlide();
+});
+
+document.querySelector(".prev").addEventListener("click",()=>{
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateSlide();
+});
+
+function updateSlide(){
+  slidesTrack.style.transform =
+    `translateX(-${currentSlide * 100}%)`;
+}
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+  /* ===== ランダム並び替え ===== */
+
+  const slidesContainer = document.querySelector(".slides");
+  const slideElems = Array.from(document.querySelectorAll(".slide"));
+
+  function shuffle(array){
+    for(let i=array.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [array[i],array[j]] = [array[j],array[i]];
+    }
+  }
+
+  shuffle(slideElems);
+
+  slideElems.forEach(slide=>{
+    slidesContainer.appendChild(slide);
+  });
+
+  // X埋め込み再読み込み
+  if(window.twttr){
+    twttr.widgets.load();
+  }
+
+  /* ===== スライド処理 ===== */
+
+  let currentSlide = 0;
+  const slides = document.querySelector(".slides");
+  const totalSlides = document.querySelectorAll(".slide").length;
+
+  document.querySelector(".next").addEventListener("click",()=>{
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlide();
+  });
+
+  document.querySelector(".prev").addEventListener("click",()=>{
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  });
+
+  function updateSlide(){
+    slides.style.transform =
+      `translateX(-${currentSlide * 100}%)`;
+  }
+
+});
+
+window.addEventListener("load",()=>{
+
+  setTimeout(()=>{
+    document
+      .getElementById("loadingScreen")
+      .classList.add("fade-out");
+
+    // ★ユニオン文字起動
+    startLogoAnimation();
+
+  },1500);
+
+});
