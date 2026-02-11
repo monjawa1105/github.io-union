@@ -536,6 +536,7 @@ li {
   transform:scale(1.1);
   box-shadow:0 0 20px #ff4fbf;
 }
+
 .reel.stop{
   animation:bounce 0.3s ease;
 }
@@ -789,5 +790,153 @@ body.rainbow-flash{
   }
 }
 
+#gacha {
+  text-align: center;
+  margin: 30px 0;
+}
 
+#gachaBtn {
+  background:#ff4fbf;
+ color:white;
+ border:none;
+ padding:12px 25px;
+ font-size:18px;
+ border-radius:30px;
+ cursor:pointer;
+ box-shadow:0 0 10px #ffd000;
+}
 
+#gachaBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #ff4fbf;
+}
+
+#gachaResult img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 20px;
+  transform: rotate(0deg);
+}
+
+#gachaResult{
+ margin-top:20px;
+ font-size:20px;
+ color:#ff4fbf;
+}
+
+/* ガチャ画像カード風 */
+.gacha-card {
+  display: inline-block;
+  background: #fff;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(255,79,191,0.3);
+  transform: translateY(0);
+  transition: transform 0.5s, box-shadow 0.5s;
+  position: relative;
+  max-width: 250px;
+}
+
+/* 浮かせる演出 */
+.gacha-card.float {
+  animation: floatCard 1s ease forwards;
+}
+
+/* 光る演出 */
+.gacha-card.glow {
+  box-shadow:
+    0 0 20px #ff4fbf,
+    0 0 30px #ffd000,
+    0 0 40px #ff4fbf;
+}
+
+/* 浮遊アニメ */
+@keyframes floatCard {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.gacha-result img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ガチャカードの虹色光 */
+.gacha-card.rainbow-glow {
+  animation: float 1s ease forwards, rainbowGlow 2s linear infinite alternate;
+  box-shadow: 0 0 20px #ff4fbf;
+}
+
+/* 浮かせるアニメーション */
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* 虹色光のアニメーション */
+@keyframes rainbowGlow {
+  0%   { box-shadow: 0 0 20px red, 0 0 40px orange; }
+  20%  { box-shadow: 0 0 20px orange, 0 0 40px yellow; }
+  40%  { box-shadow: 0 0 20px yellow, 0 0 40px green; }
+  60%  { box-shadow: 0 0 20px green, 0 0 40px blue; }
+  80%  { box-shadow: 0 0 20px blue, 0 0 40px purple; }
+  100% { box-shadow: 0 0 20px purple, 0 0 40px red; }
+}
+/* 🎉 ガチャ紙吹雪 */
+.gacha-particle{
+  position: fixed;
+  font-size: 26px;
+  pointer-events: none;
+  animation: gachaFly 1.5s forwards;
+  z-index: 9999;
+}
+
+@keyframes gachaFly{
+  0%{
+    opacity:1;
+    transform:translate(0,0) scale(1) rotate(0deg);
+  }
+  100%{
+    opacity:0;
+    transform:
+      translate(var(--x), var(--y))
+      scale(var(--s))
+      rotate(var(--r));
+  }
+}
+/* 作者情報まとめ枠 */
+.gacha-author{
+  margin:14px auto 4px;
+  padding:6px 14px;
+  width:fit-content;
+  background:rgba(0,0,0,0.6);
+  border:1px solid #ff4fbf;
+  border-radius:20px;
+  color:#ffd6f2;
+  font-size:14px;
+  box-shadow:0 0 10px #ff4fbf;
+  text-shadow:0 0 6px #ff4fbf;
+}
+
+/* Xリンク */
+.gacha-xlink{
+  display:inline-block;
+  margin-top:6px;
+  padding:6px 16px;
+  border-radius:20px;
+  background:#ff4fbf;
+  color:#000;
+  font-size:14px;
+  text-decoration:none;
+  box-shadow:0 0 12px #ff4fbf;
+  transition:0.3s;
+}
+
+.gacha-xlink:hover{
+  background:#ffd000;
+  box-shadow:0 0 20px #ffd000;
+  transform:scale(1.1);
+}
