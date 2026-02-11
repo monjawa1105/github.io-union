@@ -115,7 +115,7 @@ if(fortuneBtn && fortuneResult){
  if(savedDate === today && savedResult){
   fortuneResult.textContent = savedResult;
   fortuneBtn.disabled = true;
-  fortuneBtn.textContent = "今日は引きました";
+  fortuneBtn.textContent = "今日はもう引きました";
  }
 
  fortuneBtn.addEventListener("click",()=>{
@@ -128,7 +128,7 @@ if(fortuneBtn && fortuneResult){
   localStorage.setItem("fortuneResult", f);
 
   fortuneBtn.disabled = true;
-  fortuneBtn.textContent = "今日は引きました";
+  fortuneBtn.textContent = "今日はもう引きました";
  });
 
 }
@@ -364,4 +364,108 @@ window.addEventListener("load",()=>{
 
   },1500);
 
+});
+//localStorage.clear()
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("gachaBtn");
+  const result = document.getElementById("gachaResult");
+  const imgContainer = document.getElementById("gachaImageContainer");
+
+  const images = [
+    "img/IMG_2241.JPG",
+    "img/IMG_2243.JPG",
+    "img/IMG_2244.JPG",
+    "img/IMG_2245.JPG",
+    "img/IMG_2246.JPG",
+    "img/IMG_2247.JPG",
+    "img/IMG_2248.JPG"
+  ];
+
+  const today = new Date().toISOString().slice(0,10);
+  const savedDate = localStorage.getItem("gachaDate");
+  const savedImg = localStorage.getItem("gachaImg");
+
+  function showGacha(imgSrc) {
+  imgContainer.innerHTML = "";
+  result.textContent = "";
+
+  const card = document.createElement("div");
+  card.className = "gacha-card float glow rainbow-glow";
+
+  const img = document.createElement("img");
+  img.src = imgSrc;
+  img.style.maxWidth = "400px";
+  img.style.transform = "rotate(0deg)";
+
+  card.appendChild(img);
+  imgContainer.appendChild(card);
+
+  // 作者名
+const name = document.createElement("p");
+name.textContent = "作者：らんらんるぅー";
+name.className = "gacha-author";
+
+// Xリンク
+const link = document.createElement("a");
+link.href = "https://x.com/ranranru_nikke";
+link.target = "_blank";
+link.textContent = "Xはこちら";
+link.className = "gacha-xlink";
+
+// 👉 カードの外に追加
+imgContainer.appendChild(name);
+imgContainer.appendChild(link);
+
+
+  // 🌈 虹色紙吹雪
+  const colors = ["#ff0000","#ff7f00","#ffff00","#00ff00","#00ffff","#0000ff","#ff00ff"];
+
+  const rect = card.getBoundingClientRect();
+
+  for(let i=0;i<40;i++){
+    const p = document.createElement("span");
+    p.className = "gacha-particle";
+    p.textContent = "☆";
+
+    p.style.color = colors[Math.floor(Math.random()*colors.length)];
+
+    p.style.left = rect.left + rect.width/2 + "px";
+    p.style.top  = rect.top  + rect.height/2 + "px";
+
+    p.style.setProperty("--x",(Math.random()*300-150)+"px");
+    p.style.setProperty("--y",(Math.random()*300-150)+"px");
+    p.style.setProperty("--r",(Math.random()*360)+"deg");
+    p.style.setProperty("--s",(Math.random()*1+0.5));
+
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),1500);
+  }
+
+  setTimeout(() => card.classList.remove("glow"), 1000);
+}
+
+
+
+  // すでに引いている場合
+  if(savedDate === today && savedImg){
+    showGacha(savedImg);
+    btn.textContent = "今日はもう引きました";
+    btn.disabled = true;
+  } else {
+    result.textContent = "ボタンを押してね！";
+  }
+
+  // ボタンクリック
+  btn.addEventListener("click", () => {
+    const randomImg = images[Math.floor(Math.random()*images.length)];
+
+    showGacha(randomImg);
+
+    // 保存
+    localStorage.setItem("gachaDate", today);
+    localStorage.setItem("gachaImg", randomImg);
+
+    btn.textContent = "今日はもう引きました";
+    btn.disabled = true;
+  });
 });
