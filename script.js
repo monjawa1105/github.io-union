@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/IMG_2243.JPG"
   ];
 
-  const today = new Date().toISOString().slice(0,10);
+  const today = new Date().toLocaleDateString("sv-SE");
   const savedDate = localStorage.getItem("gachaDate");
   const savedImg = localStorage.getItem("gachaImg");
 
