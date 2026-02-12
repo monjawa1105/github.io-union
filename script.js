@@ -477,21 +477,29 @@ imgContainer.appendChild(link);
 });
 
 
-let poopCount = 0;
+let tapCount = 0;
 
-document.addEventListener("click", () => {
-  poopCount++;
+function poopTap(){
+  tapCount++;
 
-  // 5回
-  if(poopCount === 5){
+  // 5回 → でか💩
+  if(tapCount === 5){
     spawnBigPoop();
   }
 
-  // 10回
-  if(poopCount === 10){
+  // 10回 → 💩大量落下
+  if(tapCount === 10){
     spawnPoopRain();
-    poopCount = 0; // リセット
+    tapCount = 0; // リセット
   }
+}
+
+// PCクリック
+document.addEventListener("click", poopTap);
+
+// 📱スマホタップ対応
+document.addEventListener("touchstart", function(e){
+  poopTap();
 });
 
 // 💩中央にドーン
