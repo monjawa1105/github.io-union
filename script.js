@@ -475,3 +475,57 @@ imgContainer.appendChild(link);
     btn.disabled = true;
   });
 });
+
+
+let poopCount = 0;
+
+document.addEventListener("click", () => {
+  poopCount++;
+
+  // 5回
+  if(poopCount === 5){
+    spawnBigPoop();
+  }
+
+  // 10回
+  if(poopCount === 10){
+    spawnPoopRain();
+    poopCount = 0; // リセット
+  }
+});
+
+// 💩中央にドーン
+function spawnBigPoop(){
+  const poop = document.createElement("div");
+  poop.textContent = "💩";
+  poop.className = "big-poop";
+  document.body.appendChild(poop);
+  setTimeout(()=>poop.remove(),1500);
+}
+
+// 💩上から大量落下
+function spawnPoopRain(){
+  for(let i=0;i<40;i++){
+    const poop = document.createElement("span");
+    poop.textContent = "💩";
+    poop.className = "poop-fall";
+    poop.style.left = Math.random()*100 + "vw";
+    poop.style.animationDelay = Math.random()*0.5 + "s";
+    document.body.appendChild(poop);
+    setTimeout(()=>poop.remove(),2000);
+  }
+}
+
+
+const union = document.getElementById("logo");
+
+union.addEventListener("click", ()=>{
+
+  const love = document.createElement("div");
+  love.textContent = "(    ᷄ᾥ ᷅  🫶🏻) 𝑩𝑰𝑮 𝑳𝑶𝑽𝑬______💓";
+  love.className = "big-love";
+  document.body.appendChild(love);
+
+  setTimeout(()=>love.remove(),1500);
+});
+
