@@ -378,7 +378,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/IMG_2245.JPG",
     "img/IMG_2246.JPG",
     "img/IMG_2247.JPG",
-    "img/IMG_2248.JPG"
+    "img/IMG_2248.JPG",
+    "img/IMG_2278.JPG",
+    "img/IMG_2279.JPG",
+    "img/IMG_2280.JPG",
+    "img/IMG_2281.JPG",
+    "img/IMG_2282.JPG",
+    "img/IMG_2243.JPG"
   ];
 
   const today = new Date().toISOString().slice(0,10);
