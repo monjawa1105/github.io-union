@@ -482,25 +482,24 @@ let tapCount = 0;
 function poopTap(){
   tapCount++;
 
-  // 5回 → でか💩
   if(tapCount === 5){
     spawnBigPoop();
   }
 
-  // 10回 → 💩大量落下
   if(tapCount === 10){
     spawnPoopRain();
-    tapCount = 0; // リセット
+    tapCount = 0;
   }
 }
 
-// PCクリック
+// 🖱 PC用
 document.addEventListener("click", poopTap);
 
-// 📱スマホタップ対応
+// 📱スマホ用
 document.addEventListener("touchstart", function(e){
+  e.preventDefault();   // ← これ超重要
   poopTap();
-});
+},{ passive:false });
 
 // 💩中央にドーン
 function spawnBigPoop(){
