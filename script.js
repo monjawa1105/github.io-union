@@ -478,6 +478,25 @@ imgContainer.appendChild(link);
 
 
 let tapCount = 0;
+let startY = 0;
+
+// 指を置いた位置
+document.addEventListener("touchstart", e=>{
+  startY = e.touches[0].clientY;
+},{ passive:true });
+
+// 指を離した時
+document.addEventListener("touchend", e=>{
+  const endY = e.changedTouches[0].clientY;
+
+  // 動きが小さければタップ
+  if(Math.abs(endY - startY) < 10){
+    poopTap();
+  }
+},{ passive:true });
+
+// PCクリック
+document.addEventListener("click", poopTap);
 
 function poopTap(){
   tapCount++;
@@ -491,9 +510,6 @@ function poopTap(){
     tapCount = 0;
   }
 }
-
-// ✅ PC & スマホ共通
-document.addEventListener("pointerdown", poopTap);
 
 // 💩中央にドーン
 function spawnBigPoop(){
