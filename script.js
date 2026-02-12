@@ -492,14 +492,8 @@ function poopTap(){
   }
 }
 
-// 🖱 PC用
-document.addEventListener("click", poopTap);
-
-// 📱スマホ用
-document.addEventListener("touchstart", function(e){
-  e.preventDefault();   // ← これ超重要
-  poopTap();
-},{ passive:false });
+// ✅ PC & スマホ共通
+document.addEventListener("pointerdown", poopTap);
 
 // 💩中央にドーン
 function spawnBigPoop(){
