@@ -384,6 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/IMG_2280.JPG",
     "img/IMG_2281.JPG",
     "img/IMG_2282.JPG",
+    "img/IMG_2283.JPG",
     "img/IMG_2364.JPG",
     "img/IMG_2365.JPG",
     "img/IMG_2366.JPG",
