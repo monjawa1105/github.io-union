@@ -372,9 +372,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgContainer = document.getElementById("gachaImageContainer");
 
   const images = [
-    "img/IMG_2241.JPG",
+    //"img/IMG_2241.JPG",
     "img/IMG_2243.JPG",
-    "img/IMG_2244.JPG",
+    //"img/IMG_2244.JPG",
     "img/IMG_2245.JPG",
     "img/IMG_2246.JPG",
     "img/IMG_2247.JPG",
@@ -384,7 +384,15 @@ document.addEventListener("DOMContentLoaded", () => {
     "img/IMG_2280.JPG",
     "img/IMG_2281.JPG",
     "img/IMG_2282.JPG",
-    "img/IMG_2243.JPG"
+    "img/IMG_2364.JPG",
+    "img/IMG_2365.JPG",
+    "img/IMG_2366.JPG",
+    "img/IMG_2367.JPG",
+    "img/IMG_2368.JPG",
+    "img/IMG_2369.JPG",
+    "img/IMG_2370.JPG",
+    "img/IMG_2371.JPG",
+    "img/IMG_2372.JPG"
   ];
 
   const today = new Date().toLocaleDateString("sv-SE");
