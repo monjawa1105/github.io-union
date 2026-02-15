@@ -1023,16 +1023,15 @@ body.rainbow-flash{
   transform:scale(1.05);
 }
 
-#visitorCounter{
-  text-align:center;
-  margin:40px auto;
+#visitorText{
   font-size:18px;
+  text-align:center;
+  margin-top:10px;
   color:#ff4fbf;
+  text-shadow:0 0 5px #ff4fbf;
 }
 
-#visitorCounter img{
-  margin-top:10px;
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
+#counterImg{
+  vertical-align:middle;
+  height:28px;   /* 数字の大きさ */
 }
