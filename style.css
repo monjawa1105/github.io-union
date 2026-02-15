@@ -1029,6 +1029,7 @@ body.rainbow-flash{
   margin-top:10px;
   color:#ff4fbf;
   text-shadow:0 0 5px #ff4fbf;
+  white-space: nowrap;
 }
 
 #counterImg{
