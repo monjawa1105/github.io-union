@@ -6,7 +6,7 @@
 <title>EREMITA</title>
 <link rel="stylesheet" href="style.css">
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNEQV128N7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -14,6 +14,7 @@
   gtag('js', new Date());
   gtag('config', 'G-NNEQV128N7');
 </script>
+-->
 </head>
 <body>
 
@@ -75,20 +76,26 @@
 
 </h1>
 -->
+
 <h1 id="logo"></h1>
+  
+
 
 <!--
-<section id="visitorCounter" class="reveal">
-  👁️ 訪問者数 👁️
-  
-<img src="http://www5.kannet.ne.jp/~counter/count.cgi?name=EREMITA_site&type=22&width=6">
-</section>
--->
-
 <p id="visitorText">
   あなたは <span class="visitor-num">
     <img id="counterImg" src="http://www5.kannet.ne.jp/~counter/count.cgi?name=EREMITA_site&type=22&width=6" alt="counter">
   </span> 人目の訪問者です
+</p>
+-->
+<p id="visitorText">
+あなたは <span id="visitorCount">...</span> 人目の訪問者です
+</p>
+
+<p id="kiriLink">
+  🎯 <a href="https://docs.google.com/spreadsheets/d/1x2U1ggCeKzc2WE6hMRIrfFL9u3Mh_FajKfsfGB0Z1lk/edit?usp=sharing" target="_blank">
+    キリ番踏んだ人はここに記入！
+  </a>
 </p>
 
 </header>
@@ -980,6 +987,7 @@
 <section id="log"class="reveal">
 <h2>📝 更新履歴</h2>
 <ul>
+<li>2026/02/17 アクセスカウンターの変更と演出追加しました</li>
 <li>2026/02/13 演出追加しました</li>
 <li>2026/02/11 演出とえれみーた応援団員追加しました</li>
 <li>2026/02/10 えれみーた応援団員追加しました</li>
@@ -1175,6 +1183,47 @@ function startLogoAnimation(){
 }
 </script>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBAJdKtbrVbaJ1odARS9y3TTAp_KwFeyMY",
+  authDomain: "union-counter.firebaseapp.com",
+  projectId: "union-counter",
+  storageBucket: "union-counter.firebasestorage.app",
+  messagingSenderId: "1022924446811",
+  appId: "1:1022924446811:web:b19d69634707b7a1e4737e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const counterRef = doc(db, "counters", "visitor");
+
+// +1
+await updateDoc(counterRef,{
+  count: increment(1)
+});
+
+// 取得
+const snap = await getDoc(counterRef);
+const count = snap.data().count;
+
+document.getElementById("visitorCount").textContent = count;
+if(kiriTargets.includes(count)){
+  showKiriBan(count);
+}
+</script>
+
+
+<!-- 🎉 キリ番演出 -->
+<div id="kiriOverlay">
+  <div id="kiriBox">
+    <h1 id="kiriTitle">🎉 キリ番GET!! 🎉</h1>
+    <p id="kiriNumber"></p>
+    <button onclick="closeKiri()">閉じる</button>
+  </div>
+</div>
 </body>
 </html>
