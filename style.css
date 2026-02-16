@@ -1036,3 +1036,68 @@ body.rainbow-flash{
   vertical-align:middle;
   height:28px;   /* 数字の大きさ */
 }
+
+/* ===== キリ番オーバーレイ ===== */
+
+#kiriOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+#kiriBox{
+  background:#120012;
+  border:3px solid #ff4fbf;
+  padding:30px 50px;
+  text-align:center;
+  border-radius:15px;
+  box-shadow:0 0 30px #ff4fbf;
+  animation:kiriPop 0.4s ease;
+}
+
+#kiriTitle{
+  color:#ffd000;
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+#kiriNumber{
+  font-size:28px;
+  color:#ff4fbf;
+  margin-bottom:20px;
+}
+
+#kiriBox button{
+  background:#ff4fbf;
+  border:none;
+  color:#fff;
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+@keyframes kiriPop{
+  0%{transform:scale(0.5);}
+  100%{transform:scale(1);}
+}
+
+#kiriLink{
+  text-align:center;
+  margin-top:6px;
+  font-size:14px;
+}
+
+#kiriLink a{
+  color:#ff4fbf;
+  text-decoration:none;
+  text-shadow:0 0 5px #ff4fbf;
+}
+
+#kiriLink a:hover{
+  color:#ffd000;
+  text-shadow:0 0 10px #ffd000;
+}
