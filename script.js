@@ -29,7 +29,7 @@ document.querySelectorAll(".days").forEach(el=>{
  const diff = Math.floor((now-start)/(1000*60*60*24));
  el.textContent = diff;
 });
-// ✨キラキラアニメ
+// キラキラアニメ
 const canvas = document.getElementById("sparkle");
 const ctx = canvas.getContext("2d");
 
@@ -90,7 +90,7 @@ function revealOnScroll(){
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
-// ==== おみくじ（1日1回） ====
+// おみくじ（1日1回）
 const fortuneBtn = document.getElementById("fortuneBtn");
 const fortuneResult = document.getElementById("fortuneResult");
 
@@ -235,7 +235,7 @@ document.querySelectorAll('.card').forEach(card => observer.observe(card));
 
 document.querySelectorAll('.glossary-card').forEach(card => observer.observe(card));
 
-// 🌠 流れ星生成
+// 流れ星生成
 setInterval(()=>{
   if(Math.random() < 0.3){ // 出現確率
     createStar();
@@ -258,7 +258,7 @@ function createStar(){
   setTimeout(()=>star.remove(),5000);
 }
 
-// ✨ クリック時の特殊演出
+// クリック時の特殊演出
 function triggerStarEffect(){
 
   // 画面フラッシュ
@@ -267,7 +267,6 @@ function triggerStarEffect(){
   document.body.appendChild(flash);
   setTimeout(()=>flash.remove(),800);
 
-  // ハート大量発生
   for(let i=0;i<40;i++){
     const heart = document.createElement("span");
     heart.textContent = "🌟";
@@ -306,7 +305,7 @@ function updateSlide(){
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-  /* ===== ランダム並び替え ===== */
+  /* ランダム並び替え */
 
   const slidesContainer = document.querySelector(".slides");
   const slideElems = Array.from(document.querySelectorAll(".slide"));
@@ -329,7 +328,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     twttr.widgets.load();
   }
 
-  /* ===== スライド処理 ===== */
+  /* スライド処理 */
 
   let currentSlide = 0;
   const slides = document.querySelector(".slides");
@@ -359,7 +358,7 @@ window.addEventListener("load",()=>{
       .getElementById("loadingScreen")
       .classList.add("fade-out");
 
-    // ★ユニオン文字起動
+    // ユニオン文字起動
     startLogoAnimation();
 
   },1500);
@@ -427,12 +426,12 @@ link.target = "_blank";
 link.textContent = "Xはこちら";
 link.className = "gacha-xlink";
 
-// 👉 カードの外に追加
+// カードの外に追加
 imgContainer.appendChild(name);
 imgContainer.appendChild(link);
 
 
-  // 🌈 虹色紙吹雪
+  // 虹色紙吹雪
   const colors = ["#ff0000","#ff7f00","#ffff00","#00ff00","#00ffff","#0000ff","#ff00ff"];
 
   const rect = card.getBoundingClientRect();
