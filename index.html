@@ -734,7 +734,7 @@
 </ul>
 </section>
 
-<!-- 用語集セクション -->
+<!-- 用語集 -->
 <section id="glossary"class="reveal">
   <h2>📖えれみーた用語辞典</h2>
   <div class="glossary-cards">
@@ -746,7 +746,6 @@
       <div class="term">えれみーた時空</div>
       <div class="definition">ユニオン内のオフ会の際に観測される、集合時間より30~1時間前にメンバーが到着してしまう現象のこと。</div>
     </div>
-    <!-- 必要に応じて追加 -->
      <div class="glossary-card glossary-card-left">
       <div class="term">様子がおかしい</div>
       <div class="definition">様子がおかしいこと。</div>
@@ -903,7 +902,7 @@
     <div class="slides-wrapper"></div>
     <div class="slides">
 
-      <!-- ①ここにX埋め込み -->
+      
       <div class="slide">
         <blockquote class="twitter-tweet">
           <a href="https://twitter.com/ranranru_nikke/status/1966160574120866140?s=20"></a>
@@ -1056,7 +1055,7 @@ document.querySelectorAll(".member-name").forEach(name => {
 
     for (let i = 0; i < 20; i++) {
       const span = document.createElement("span");
-      span.textContent = emoji; // ←ここでカードごとの絵文字を使用
+      span.textContent = emoji; // カードごとの絵文字を使用
       span.style.position = "fixed";
 
       // カード範囲内ランダム初期位置
@@ -1116,7 +1115,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   btn.addEventListener("click",()=>{
 
-    // ▶ SPIN
+    // SPIN
     if(!spinning){
       spinning = true;
       stopIndex = 0;
@@ -1131,7 +1130,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       });
 
     }
-    // ⏹ STOP
+    // STOP
     else{
       clearInterval(intervals[stopIndex]);
 
@@ -1262,7 +1261,7 @@ if(kiriTargets.includes(count)){
 </script>
 
 
-<!-- 🎉 キリ番演出 -->
+<!-- キリ番演出 -->
 <div id="kiriOverlay">
   <div id="kiriBox">
     <h1 id="kiriTitle">🎉 キリ番GET!! 🎉</h1>
