@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 作者名
 const name = document.createElement("p");
-name.textContent = "作者：らんらんるぅー";
+name.textContent = "作者：隠者王るぅち";
 name.className = "gacha-author";
 
 // Xリンク
